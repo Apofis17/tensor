@@ -10,7 +10,7 @@ class XLS(object):
     def __init__(self, dir='xlsFiles'):
         self.__dir = dir
 
-    def isDir(self):
+    def __isDir(self):
         """
         Проверка на наличе деректории
         """
@@ -24,12 +24,12 @@ class XLS(object):
         Обход по файлам в деректориии
         :return dict:
         """
-        self.isDir()
+        self.__isDir()
         data = {}
         for file in self.__dirFile:
             form = os.path.splitext(file)[1]
             if not form == '.xls':
-                print 'Фаил {} не подходит. Формат файла должен быть с расширением xls'.format(file)
+                print 'Фаил {} не подходит. Формат файла должен иметь расширение xls'.format(file)
             else:
                 result = dict(self.file(file))
                 data = result if len(data) == 0 else self.dictPlus(data, result)
